@@ -4,10 +4,14 @@ module.exports = app => {
     var router = require("express").Router();
     // Create a new Survey
     router.post("/", survey.create);
-    // Retrieve all Surveys
+   
    // Retrieve a single Survey with id
   router.get("/:id", survey.findOne);
    // Delete all Surveys  
    router.delete("/", survey.deleteAll);
+    // Retrieve all Surveys
+   router.get("/", survey.findAll);
+   router.put("/:id", survey.update);
+   router.delete("/:id", survey.delete);
     app.use('/api/surveys+', router);
   };

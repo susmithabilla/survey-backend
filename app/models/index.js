@@ -24,13 +24,11 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.survey = require("../models/survey.model.js")(sequelize, Sequelize);
 db.user = require("../models/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
+db.survey = require("../models/survey.model.js")(sequelize, Sequelize);
+db.survey_answers = require("../models/surveyAnswers.model.js")(sequelize, Sequelize);
 
-db.user.hasMany(db.survey,{
-  foreignKey:'userId', as:'user',
-});
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",
@@ -41,7 +39,15 @@ db.user.belongsToMany(db.role, {
   foreignKey: "userId",
   otherKey: "roleId"
 });
-
+db.user.hasMany(db.survey,{
+  foreignKey:'userId', as:'user',
+});
+db.survey.hasMany(db.survey_answers,{
+  foreignKey:'surveyId', as:'survey',
+});
+db.user.hasMany(db.survey_answers,{
+  foreignKey:'submittedBy', as:'userid',
+});
 db.ROLES = ["user", "superadmin", "admin"];
 
 module.exports = db;

@@ -9,11 +9,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.TEXT,
         get() {
           return (
-            JSON.parse(this.getDataValue('json'))
+            JSON.parse(this.getDataValue('data'))
           )
         },
         set(value) {
-          this.setDataValue('json', JSON.stringify(value))
+          this.setDataValue('data', JSON.stringify(value))
         }
       }
     });

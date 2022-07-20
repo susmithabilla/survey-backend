@@ -13,5 +13,12 @@ module.exports = app => {
    router.get("/", survey.findAll);
    router.put("/:id", survey.update);
    router.delete("/:id", survey.delete);
+  
+   router.post("/answers", survey.createSurveyAnswer);
+   router.put("/answers/:id", survey.updateSurveyAnswer);
+   router.delete("/answers/:id", survey.deleteSurveyAnswer);
+   router.delete("/answers/", survey.deleteAllSurveyAnswers);
+   router.get("/answers/0/getAllAnswers", survey.findAllSurveyAnswers);
+   router.get("/answers/:id", survey.findOneSurveyAnswer);
     app.use('/api/surveys+', router);
   };

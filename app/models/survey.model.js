@@ -5,6 +5,9 @@ module.exports = (sequelize, Sequelize) => {
       title: {
         type: Sequelize.STRING
       },
+      username: {
+        type: Sequelize.STRING
+      },
       data: {
         type: Sequelize.TEXT,
         get() {

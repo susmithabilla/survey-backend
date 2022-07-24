@@ -16,6 +16,7 @@ exports.create = (req, res) => {
     const survey = {
       title: req.query.title,
       userId: req.query.userId,
+      username: req.query.username,
       data:req.body,
     };
     // Save survey in the db
@@ -89,6 +90,7 @@ exports.update = (req, res) => {
   const survey = {
     title: req.query.title!=undefined ? req.query.title:null,
     userId: req.query.userId!=undefined ? req.query.userId:null,
+    username: req.query.username!=undefined ? req.query.username:null,
     data:req.body!=undefined? req.body:null,  
   };
   const id = req.params.id;
@@ -149,6 +151,7 @@ exports.createSurveyAnswer = (req, res) => {
     name: req.query.name,
     surveyId: req.query.surveyId,
     submittedBy: req.query.submittedBy,
+    username: req.query.username,
     data:req.body,
   };
   // Save survey response in the database
@@ -171,6 +174,7 @@ exports.updateSurveyAnswer = (req, res) => {
     name: req.query.name,
     surveyId: req.query.surveyId,
     submittedBy: req.query.submittedBy,
+    username: req.query.username,
     data:req.body,
   };
   const id = req.params.id;

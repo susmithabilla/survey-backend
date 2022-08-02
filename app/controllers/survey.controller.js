@@ -123,7 +123,7 @@ exports.delete = (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Survey was deleted successfully!"
+          message: "Survey deleted successfully!"
         });
       } else {
         res.send({
@@ -133,7 +133,7 @@ exports.delete = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Survey with id=" + id
+        message: "Unable to delete Survey with id=" + id
       });
     });
 };
@@ -233,7 +233,7 @@ SurveyAnswer.destroy({
   })
   .catch(err => {
     res.status(500).send({
-      message: "Could not delete Survey answer with id=" + id
+      message: "Unable to delete Survey answer with id=" + id
     });
   });
 };
